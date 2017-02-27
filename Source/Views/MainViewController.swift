@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import ReSwift
-import FirebaseAuth
+import ReactiveReSwift
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StoreSubscriber {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    private let disposeBag = SubscriptionReferenceBag()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var floatingBottomBar: UIView!
     
@@ -39,14 +40,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mainStore.subscribe(self)
+        disposeBag += mainStore.observable.subscribe{ [weak self] state in
+            self?.ideas = state.ideas
+            self?.tableView.reloadData()
+        }
         
         mainStore.dispatch(LoadIdeas())
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        mainStore.unsubscribe(self)
+        //mainStore.unsubscribe(self)
     }
     
     func refresh(_ refreshControl: UIRefreshControl) {
@@ -58,12 +62,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func addButtonTouched(_ sender: Any) {
         mainStore.dispatch(AddIdea(title: "Teste"))
     }
-    
-    func newState(state: AppState) {
-        self.ideas = state.ideas
-        tableView.reloadData()
-    }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()

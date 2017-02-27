@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ReSwift
+import ReactiveReSwift
 
 struct AnonymousLogin: Action {}
 struct LoginFinished: Action {

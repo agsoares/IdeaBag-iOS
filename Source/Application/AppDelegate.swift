@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import ReSwift
+import ReactiveReSwift
 import Firebase
 
-let mainStore = Store<AppState>(
-    reducer: MainReducer(),
-    state: nil
+let mainStore: Store = Store(
+    reducer: mainReducer,
+    observable: ObservableProperty(AppState())
 )
 
 @UIApplicationMain

@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import IdeaBag
-
 class IdeaBagTests: XCTestCase {
     
     override func setUp() {

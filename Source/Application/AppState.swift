@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ReSwift
+import ReactiveReSwift
 import FirebaseAuth
 
 struct AppState: StateType {
