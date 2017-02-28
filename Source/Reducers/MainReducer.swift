@@ -11,11 +11,9 @@ import ReactiveReSwift
 
 let mainReducer: Reducer<AppState> = { action, state -> AppState in
     var state = state
-    
+
     state = authReducer(action, state)
     state = ideaReducer(action, state)
-    
+
     return state
 }
-
-

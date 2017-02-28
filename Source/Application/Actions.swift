@@ -20,7 +20,5 @@ struct AddIdea: Action {
 
 struct LoadIdeas: Action { }
 struct LoadIdeasFinished: Action {
-    var ideas: Array<NSDictionary>
+    var ideas: [NSDictionary]
 }
-
-

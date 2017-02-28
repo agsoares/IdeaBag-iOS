@@ -12,22 +12,22 @@ import Foundation
 import FirebaseDatabase
 import ReactiveReSwift
 
-let ideaReducer : Reducer<AppState> = { action, state -> AppState in
+let ideaReducer: Reducer<AppState> = { action, state -> AppState in
     var database = FIRDatabase.database()
-    var state = state 
-    
+    var state = state
+
     switch action {
     case let action as AddIdea:
         guard let user = state.user else {
             break
         }
         let idea = ["title": action.title]
-        
+
         let ref = database.reference()
         ref.child("users/\(user.uid)/posts").childByAutoId().setValue(idea)
         state.ideas.append(idea as NSDictionary)
         break
-        
+
     case _ as LoadIdeas:
         guard let user = state.user else {
             break
@@ -35,27 +35,28 @@ let ideaReducer : Reducer<AppState> = { action, state -> AppState in
         let ref = database.reference().child("users/\(user.uid)/posts")
         ref.keepSynced(true)
         ref.observeSingleEvent(of: .value, with: { snapshot in
-            var ideas = Array<NSDictionary>()
+            var ideas = [NSDictionary]()
             for child in snapshot.children {
-                
+
                 let childSnapshot = snapshot.childSnapshot(forPath: (child as AnyObject).key)
-                let idea = childSnapshot.value
-                ideas.append(idea as! NSDictionary)
+                if let idea = childSnapshot.value as? NSDictionary {
+                    ideas.append(idea)
+                }
             }
-            
+
             mainStore.dispatch(LoadIdeasFinished(ideas: ideas))
-        });
-        
+        })
+
         break
     case let action as LoadIdeasFinished:
         let ideas = action.ideas
         state.ideas = ideas
         break
-        
+
     default:
         break
     }
-    
+
     return state
-    
+
 }

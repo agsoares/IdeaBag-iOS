@@ -14,8 +14,8 @@ import ReactiveReSwift
 
 let authReducer: Reducer<AppState> = { (action, state) -> AppState in
     var auth = FIRAuth.auth()
-    var state = state 
-    
+    var state = state
+
     switch action {
     case _ as AnonymousLogin:
         auth?.signInAnonymously(completion: { (user, error) in
@@ -26,16 +26,15 @@ let authReducer: Reducer<AppState> = { (action, state) -> AppState in
             }
         })
         break
-        
+
     case let action as LoginFinished:
         state.user = action.user as? FIRUser
         break
-        
+
     default:
         break
     }
-    
+
     return state
 
-    
 }
