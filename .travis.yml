@@ -10,3 +10,6 @@ osx_image: xcode8.2
 xcode_project: IdeaBag.xcworkspace
 xcode_scheme: IdeaBag
 xcode_sdk: iphonesimulator9.3
+
+notifications:
+  email: false
