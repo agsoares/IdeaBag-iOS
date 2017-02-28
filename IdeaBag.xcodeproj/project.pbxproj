@@ -23,6 +23,7 @@
 		B9DAF71A1E590B79006A4923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAF7191E590B79006A4923 /* Assets.xcassets */; };
 		B9DAF71D1E590B79006A4923 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DAF71B1E590B79006A4923 /* LaunchScreen.storyboard */; };
 		B9DAF7281E590B79006A4923 /* IdeaBagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAF7271E590B79006A4923 /* IdeaBagTests.swift */; };
+		B9F722251E64F71400428F17 /* ReactiveReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9934B351E64DB62008FC0DA /* ReactiveReSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F722251E64F71400428F17 /* ReactiveReSwift.framework in Frameworks */,
 				2A9384E3A4531F3ACBB19067 /* Pods_IdeaBagTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +603,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = M7SM6673Q8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agsoares.IdeaBagTests;
@@ -617,6 +623,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = M7SM6673Q8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agsoares.IdeaBagTests;
