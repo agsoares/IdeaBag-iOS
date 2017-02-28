@@ -1,6 +1,0 @@
-framework module Pods_IdeaBag {
-  umbrella header "Pods-IdeaBag-umbrella.h"
-
-  export *
-  module * { export * }
-}
