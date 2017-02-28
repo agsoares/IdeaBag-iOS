@@ -1,0 +1,15 @@
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+install:
+  - carthage update --platform iOS --no-use-binaries
+  - pod install
+
+language: objective-c
+osx_image: xcode8.2
+xcode_project: IdeaBag.xcworkspace
+xcode_scheme: IdeaBag
+xcode_sdk: iphonesimulator9.3
+
+notifications:
+  email: false
