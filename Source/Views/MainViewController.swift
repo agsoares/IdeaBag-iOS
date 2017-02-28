@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveReSwift
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController {
 
     private let disposeBag = SubscriptionReferenceBag()
 
@@ -21,7 +21,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.delegate = self
+        tableView.delegate   = self
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
 
@@ -49,34 +49,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //mainStore.unsubscribe(self)
+        disposeBag.dispose()
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {
         mainStore.dispatch(LoadIdeas())
-        // Do your job, when done:
         refreshControl.endRefreshing()
     }
 
     @IBAction func addButtonTouched(_ sender: Any) {
         mainStore.dispatch(AddIdea(title: "Teste"))
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        if let title = ideas[indexPath.row]["title"] as? String {
-            cell.textLabel?.text = title
-        }
-
-        return cell
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ideas.count
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,4 +77,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
 
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        if let title = ideas[indexPath.row]["title"] as? String {
+            cell.textLabel?.text = title
+        }
+        return cell
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ideas.count
+    }
 }
