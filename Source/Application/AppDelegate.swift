@@ -11,7 +11,7 @@ import ReactiveReSwift
 import Firebase
 
 let mainStore: Store = Store(
-    reducer: mainReducer,
+    reducer: MainReducer().reducer(),
     observable: ObservableProperty(AppState())
 )
 

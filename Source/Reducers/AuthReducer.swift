@@ -12,29 +12,34 @@ import Foundation
 import FirebaseAuth
 import ReactiveReSwift
 
-let authReducer: Reducer<AppState> = { (action, state) -> AppState in
+struct AuthReducer {
     var auth = FIRAuth.auth()
-    var state = state
 
-    switch action {
-    case _ as AnonymousLogin:
-        auth?.signInAnonymously(completion: { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                mainStore.dispatch(LoginFinished(user: user!))
+    func reducer() -> Reducer<AppState> {
+        return { (action, state) -> AppState in
+            var state = state
+
+            switch action {
+            case _ as AnonymousLogin:
+                self.auth?.signInAnonymously(completion: { (user, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        mainStore.dispatch(LoginFinished(user: user!))
+                    }
+                })
+                break
+
+            case let action as LoginFinished:
+                state.user = action.user as? FIRUser
+                break
+
+            default:
+                break
             }
-        })
-        break
 
-    case let action as LoginFinished:
-        state.user = action.user as? FIRUser
-        break
+            return state
 
-    default:
-        break
+        }
     }
-
-    return state
-
 }

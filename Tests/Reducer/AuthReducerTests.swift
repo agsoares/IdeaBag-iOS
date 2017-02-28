@@ -27,7 +27,7 @@ class AuthReducerTests: XCTestCase {
         let initialState = AppState(user: nil, ideas: [])
         
         let testStore = Store (
-            reducer: mainReducer,
+            reducer: MainReducer().reducer(),
             observable: ObservableProperty(initialState)
         )
         
