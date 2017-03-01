@@ -58,7 +58,7 @@
                     <connections>
                         <outlet property="floatingBottomBar" destination="TFS-VP-12f" id="gAb-G3-EFK"/>
                         <outlet property="tableView" destination="DEF-qD-5HL" id="kVC-w6-Lca"/>
-                        <segue destination="fuR-eT-4Ez" kind="presentation" identifier="ideaSegue" id="LEK-kZ-kgF"/>
+                        <segue destination="fuR-eT-4Ez" kind="show" identifier="ideaSegue" id="LEK-kZ-kgF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoA-ib-5cS" userLabel="First Responder" sceneMemberID="firstResponder"/>

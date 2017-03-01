@@ -42,7 +42,8 @@ struct IdeaReducer {
                     for child in snapshot.children {
 
                         let childSnapshot = snapshot.childSnapshot(forPath: (child as AnyObject).key)
-                        if let idea = childSnapshot.value as? NSDictionary {
+                        if let idea = childSnapshot.value as? NSMutableDictionary {
+                            idea["id"] = childSnapshot.key
                             ideas.append(idea)
                         }
                     }

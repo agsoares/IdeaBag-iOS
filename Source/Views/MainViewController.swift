@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
 
+        self.navigationController?.isHeroEnabled = true
         isHeroEnabled = true
 
         let refreshControl = UIRefreshControl()
@@ -68,9 +69,15 @@ class MainViewController: UIViewController {
 
     @IBAction func newIdeaTouched(_ sender: Any) {
         self.performSegue(withIdentifier: "ideaSegue", sender: nil)
-        //let ideaVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeaViewController")
-        //self.navigationController?.pushViewController(ideaVC, animated: true)
-        //self.hero_replaceViewController(with: ideaVC)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ideaSegue" {
+            if let currentCell = sender as? UITableViewCell {
+                let vc = segue.destination as? IdeaViewController
+                vc?.view.heroID = currentCell.contentView.heroID
+            }
+        }
     }
 
     func configureLayout() {
@@ -96,13 +103,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell()
         if let title = ideas[indexPath.row]["title"] as? String {
             cell.textLabel?.text = title
-            cell.contentView.heroID = "newIdeia"
+            cell.contentView.heroID = "test"
+        }
+        if let id = ideas[indexPath.row]["id"] as? String {
+            cell.contentView.heroID = id
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ideaSegue", sender: nil)
+        let cell = self .tableView(tableView, cellForRowAt: indexPath)
+        performSegue(withIdentifier: "ideaSegue", sender: cell)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
