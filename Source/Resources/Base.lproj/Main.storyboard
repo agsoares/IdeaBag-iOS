@@ -58,11 +58,30 @@
                     <connections>
                         <outlet property="floatingBottomBar" destination="TFS-VP-12f" id="gAb-G3-EFK"/>
                         <outlet property="tableView" destination="DEF-qD-5HL" id="kVC-w6-Lca"/>
+                        <segue destination="fuR-eT-4Ez" kind="presentation" identifier="ideaSegue" id="LEK-kZ-kgF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GoA-ib-5cS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1821.5999999999999" y="696.7016491754124"/>
+        </scene>
+        <!--Idea View Controller-->
+        <scene sceneID="K9S-wF-xqf">
+            <objects>
+                <viewController storyboardIdentifier="IdeaViewController" id="fuR-eT-4Ez" customClass="IdeaViewController" customModule="IdeaBag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cqs-2l-3cg"/>
+                        <viewControllerLayoutGuide type="bottom" id="bij-CF-ezG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZFi-1i-zI8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9RV-OX-vM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2577" y="697"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aag-04-twI">

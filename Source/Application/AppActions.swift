@@ -1,5 +1,5 @@
 //
-//  Actions.swift
+//  AppActions.swift
 //  IdeaBag
 //
 //  Created by Adriano Soares on 18/02/17.

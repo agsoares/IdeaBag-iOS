@@ -9,14 +9,18 @@
 /* Begin PBXBuildFile section */
 		2A9384E3A4531F3ACBB19067 /* Pods_IdeaBagTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4833F790F53B42114ECEA74 /* Pods_IdeaBagTests.framework */; };
 		6505FBEEE1D99AB1C43F8085 /* Pods_IdeaBag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD24AAB708109980A31C36B /* Pods_IdeaBag.framework */; };
+		B9327F211E66206D00B2C42B /* AppLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9327F201E66206D00B2C42B /* AppLayout.swift */; };
 		B97A41621E59128800969928 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B97A41611E59128800969928 /* GoogleService-Info.plist */; };
 		B97A41651E591B1E00969928 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A41641E591B1E00969928 /* AppState.swift */; };
 		B97A416A1E591D6300969928 /* MainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A41691E591D6300969928 /* MainReducer.swift */; };
-		B97A416C1E593B5300969928 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A416B1E593B5300969928 /* Actions.swift */; };
+		B97A416C1E593B5300969928 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A416B1E593B5300969928 /* AppActions.swift */; };
 		B9934B321E64CD8F008FC0DA /* AuthReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9934B311E64CD8F008FC0DA /* AuthReducerTests.swift */; };
 		B9934B361E64DB62008FC0DA /* ReactiveReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9934B351E64DB62008FC0DA /* ReactiveReSwift.framework */; };
+		B99741351E6651F7009E3BAE /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D787CF1E664303009176D1 /* Hero.framework */; };
+		B99741361E6651F7009E3BAE /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9D787CF1E664303009176D1 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9D18E3E1E620FA1008E0311 /* AuthReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18E3D1E620FA1008E0311 /* AuthReducer.swift */; };
 		B9D18E401E6210B1008E0311 /* IdeaReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18E3F1E6210B1008E0311 /* IdeaReducer.swift */; };
+		B9D787D21E6643E4009176D1 /* IdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D787D11E6643E4009176D1 /* IdeaViewController.swift */; };
 		B9DAF7131E590B79006A4923 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAF7121E590B79006A4923 /* AppDelegate.swift */; };
 		B9DAF7151E590B79006A4923 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAF7141E590B79006A4923 /* MainViewController.swift */; };
 		B9DAF7181E590B79006A4923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9DAF7161E590B79006A4923 /* Main.storyboard */; };
@@ -36,20 +40,37 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B99741371E6651F7009E3BAE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B99741361E6651F7009E3BAE /* Hero.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		143AF0C48E4D73688358DA00 /* Pods-IdeaBagTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaBagTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaBagTests/Pods-IdeaBagTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E17FE5E5E62ED3578DDB624 /* Pods-IdeaBagTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaBagTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaBagTests/Pods-IdeaBagTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81912FCA52396D11FFE35D8C /* Pods-IdeaBag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaBag.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaBag/Pods-IdeaBag.debug.xcconfig"; sourceTree = "<group>"; };
 		B1AE6568C06E9C7F7F59A12C /* Pods-IdeaBag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaBag.release.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaBag/Pods-IdeaBag.release.xcconfig"; sourceTree = "<group>"; };
+		B9327F201E66206D00B2C42B /* AppLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLayout.swift; sourceTree = "<group>"; };
 		B97A41611E59128800969928 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Source/Application/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B97A41641E591B1E00969928 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		B97A41661E591D1800969928 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B97A41691E591D6300969928 /* MainReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainReducer.swift; sourceTree = "<group>"; };
-		B97A416B1E593B5300969928 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		B97A416B1E593B5300969928 /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		B9934B311E64CD8F008FC0DA /* AuthReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthReducerTests.swift; path = Reducer/AuthReducerTests.swift; sourceTree = "<group>"; };
 		B9934B351E64DB62008FC0DA /* ReactiveReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveReSwift.framework; path = Carthage/Build/iOS/ReactiveReSwift.framework; sourceTree = "<group>"; };
 		B9D18E3D1E620FA1008E0311 /* AuthReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthReducer.swift; sourceTree = "<group>"; };
 		B9D18E3F1E6210B1008E0311 /* IdeaReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaReducer.swift; sourceTree = "<group>"; };
+		B9D787CF1E664303009176D1 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
+		B9D787D11E6643E4009176D1 /* IdeaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaViewController.swift; sourceTree = "<group>"; };
 		B9DAF70F1E590B79006A4923 /* IdeaBag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaBag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAF7121E590B79006A4923 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9DAF7141E590B79006A4923 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9934B361E64DB62008FC0DA /* ReactiveReSwift.framework in Frameworks */,
+				B99741351E6651F7009E3BAE /* Hero.framework in Frameworks */,
 				6505FBEEE1D99AB1C43F8085 /* Pods_IdeaBag.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,9 +122,10 @@
 		B972F5A31E590BF8007633DF /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				B97A416B1E593B5300969928 /* Actions.swift */,
+				B97A416B1E593B5300969928 /* AppActions.swift */,
 				B9DAF7121E590B79006A4923 /* AppDelegate.swift */,
 				B97A41641E591B1E00969928 /* AppState.swift */,
+				B9327F201E66206D00B2C42B /* AppLayout.swift */,
 				B97A41661E591D1800969928 /* GoogleService-Info.plist */,
 				B9DAF71E1E590B79006A4923 /* Info.plist */,
 			);
@@ -113,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DAF7141E590B79006A4923 /* MainViewController.swift */,
+				B9D787D11E6643E4009176D1 /* IdeaViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,6 +214,7 @@
 		CD4EB813ADF50214ECA0F440 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9D787CF1E664303009176D1 /* Hero.framework */,
 				B9934B351E64DB62008FC0DA /* ReactiveReSwift.framework */,
 				EFD24AAB708109980A31C36B /* Pods_IdeaBag.framework */,
 				D4833F790F53B42114ECEA74 /* Pods_IdeaBagTests.framework */,
@@ -212,6 +237,7 @@
 				854D7A6E438DC81B0BCF89E5 /* [CP] Embed Pods Frameworks */,
 				08EFB09B69FA17E8F7DE3947 /* [CP] Copy Pods Resources */,
 				B9EB39FB1E650413009ABE90 /* Swiftlint */,
+				B99741371E6651F7009E3BAE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -404,6 +430,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveReSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Hero.framework",
 			);
 			name = "Carthage Copy";
 			outputPaths = (
@@ -434,8 +461,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9D18E3E1E620FA1008E0311 /* AuthReducer.swift in Sources */,
-				B97A416C1E593B5300969928 /* Actions.swift in Sources */,
+				B9327F211E66206D00B2C42B /* AppLayout.swift in Sources */,
+				B97A416C1E593B5300969928 /* AppActions.swift in Sources */,
 				B97A41651E591B1E00969928 /* AppState.swift in Sources */,
+				B9D787D21E6643E4009176D1 /* IdeaViewController.swift in Sources */,
 				B9DAF7151E590B79006A4923 /* MainViewController.swift in Sources */,
 				B9D18E401E6210B1008E0311 /* IdeaReducer.swift in Sources */,
 				B9DAF7131E590B79006A4923 /* AppDelegate.swift in Sources */,

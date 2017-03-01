@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveReSwift
+import Hero
 
 class MainViewController: UIViewController {
 
@@ -25,6 +26,8 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
 
+        isHeroEnabled = true
+
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
 
@@ -33,6 +36,12 @@ class MainViewController: UIViewController {
         } else {
             tableView.backgroundView = refreshControl
         }
+
+        self.floatingBottomBar.heroID = "newIdeaView"
+        //self.floatingBottomBar.heroModifiers = [.source(heroID: "newIdeaView")]
+
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(newIdeaTouched(_:)))
+        self.floatingBottomBar.addGestureRecognizer(tapRecognizer)
 
         configureLayout()
     }
@@ -57,24 +66,27 @@ class MainViewController: UIViewController {
         refreshControl.endRefreshing()
     }
 
-    @IBAction func addButtonTouched(_ sender: Any) {
-        mainStore.dispatch(AddIdea(title: "Teste"))
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func newIdeaTouched(_ sender: Any) {
+        self.performSegue(withIdentifier: "ideaSegue", sender: nil)
+        //let ideaVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IdeaViewController")
+        //self.navigationController?.pushViewController(ideaVC, animated: true)
+        //self.hero_replaceViewController(with: ideaVC)
     }
 
     func configureLayout() {
         self.floatingBottomBar.layer.masksToBounds = false
 
-        let shadowPath = UIBezierPath(rect: self.floatingBottomBar.bounds).cgPath
-        self.floatingBottomBar.layer.shadowColor = UIColor.black.cgColor
-        self.floatingBottomBar.layer.shadowOpacity = 0.7
-        self.floatingBottomBar.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.floatingBottomBar.layer.shadowPath = shadowPath
+        self.floatingBottomBar.layer.shadowRadius  = 0.5
+        self.floatingBottomBar.layer.shadowColor   = UIColor.black.cgColor
+        self.floatingBottomBar.layer.shadowOpacity = 0.5
+        self.floatingBottomBar.layer.shadowOffset  = CGSize(width: 0, height: -5.0)
+        self.floatingBottomBar.layer.shouldRasterize = true
 
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }
@@ -84,8 +96,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell()
         if let title = ideas[indexPath.row]["title"] as? String {
             cell.textLabel?.text = title
+            cell.contentView.heroID = "newIdeia"
         }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ideaSegue", sender: nil)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
