@@ -13,4 +13,5 @@ import FirebaseAuth
 struct AppState: StateType {
     var user: FIRUser? = FIRAuth.auth()?.currentUser
     var ideas = [NSDictionary]()
+    var selectedIdea: Int?
 }

@@ -15,7 +15,7 @@ struct LoginFinished: Action {
 }
 
 struct AddIdea: Action {
-    var title: String
+    var title: String?
 }
 
 struct LoadIdeas: Action { }

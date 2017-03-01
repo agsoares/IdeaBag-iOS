@@ -12,6 +12,12 @@ import Hero
 
 class IdeaViewController: UIViewController {
 
+    private let disposeBag = SubscriptionReferenceBag()
+
+    @IBOutlet weak var titleTextField: UITextField!
+
+    var selectedIdea: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +25,31 @@ class IdeaViewController: UIViewController {
         isHeroEnabled = true
 
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        disposeBag += mainStore.observable.subscribe { [weak self] state in
+            self?.selectedIdea = state.selectedIdea
+            if let selectedIdea = state.selectedIdea {
+                self?.titleTextField.text = state.ideas[selectedIdea]["title"] as? String
+            }
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if let selectedIdea = self.selectedIdea {
+            print("\(selectedIdea)")
+            return
+        }
+        if let title = self.titleTextField.text {
+            if !title.isEmpty {
+                mainStore.dispatch(AddIdea(title: self.titleTextField.text))
+            }
+        }
+        
+        disposeBag.dispose()
+
     }
 
     override func didReceiveMemoryWarning() {
