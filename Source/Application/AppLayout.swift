@@ -9,5 +9,8 @@
 import UIKit
 
 extension UIColor {
-
+    static let backgroundColor = UIColor(red:0.93, green:0.95, blue:0.96, alpha:1.00)
+    
+    static let postColors: [UIColor] = [
+    ]
 }

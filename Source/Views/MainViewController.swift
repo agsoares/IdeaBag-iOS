@@ -39,7 +39,6 @@ class MainViewController: UIViewController {
         }
 
         self.floatingBottomBar.heroID = "newIdeaView"
-        //self.floatingBottomBar.heroModifiers = [.source(heroID: "newIdeaView")]
 
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(newIdeaTouched(_:)))
         self.floatingBottomBar.addGestureRecognizer(tapRecognizer)
@@ -73,9 +72,9 @@ class MainViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ideaSegue" {
-            if let currentCell = sender as? UITableViewCell {
+            if let heroID = sender as? String {
                 let vc = segue.destination as? IdeaViewController
-                vc?.view.heroID = currentCell.contentView.heroID
+                vc?.view.heroID = heroID
             }
         }
     }
@@ -83,11 +82,14 @@ class MainViewController: UIViewController {
     func configureLayout() {
         self.floatingBottomBar.layer.masksToBounds = false
 
-        self.floatingBottomBar.layer.shadowRadius  = 0.5
         self.floatingBottomBar.layer.shadowColor   = UIColor.black.cgColor
-        self.floatingBottomBar.layer.shadowOpacity = 0.5
-        self.floatingBottomBar.layer.shadowOffset  = CGSize(width: 0, height: -5.0)
+        self.floatingBottomBar.layer.shadowRadius  = 1
+        self.floatingBottomBar.layer.shadowOpacity = 0.9
+        self.floatingBottomBar.layer.shadowOffset  = CGSize(width: 0, height: 0.5)
         self.floatingBottomBar.layer.shouldRasterize = true
+
+        self.tableView.separatorStyle  = .none
+        self.tableView.backgroundColor = UIColor.backgroundColor
 
     }
 
@@ -100,20 +102,32 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        if let title = ideas[indexPath.row]["title"] as? String {
-            cell.textLabel?.text = title
-            cell.contentView.heroID = "test"
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ideaCell") {
+            if let title = ideas[indexPath.row]["title"] as? String {
+                let titleLabel = cell.viewWithTag(1) as? UILabel
+                titleLabel?.text = title
+            }
+            if let id = ideas[indexPath.row]["id"] as? String, let bgView = cell.viewWithTag(99) {
+                bgView.heroID = id
+            }
+            return cell
         }
-        if let id = ideas[indexPath.row]["id"] as? String {
-            cell.contentView.heroID = id
-        }
-        return cell
+        return UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.layer.masksToBounds = false
+
+        cell.layer.shadowColor   = UIColor.black.cgColor
+        cell.layer.shadowRadius  = 1.0
+        cell.layer.shadowOpacity = 0.3
+        cell.layer.shadowOffset  = CGSize(width: 0, height: 0.75)
+        cell.layer.shouldRasterize = true
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = self .tableView(tableView, cellForRowAt: indexPath)
-        performSegue(withIdentifier: "ideaSegue", sender: cell)
+        performSegue(withIdentifier: "ideaSegue", sender: cell.viewWithTag(99)?.heroID)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
