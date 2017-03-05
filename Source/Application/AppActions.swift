@@ -9,16 +9,14 @@
 import Foundation
 import ReactiveReSwift
 
-struct AnonymousLogin: Action {}
 struct LoginFinished: Action {
     var user: AnyObject
 }
 
-struct AddIdea: Action {
-    var title: String?
+struct AddIdeaFinished: Action {
+    var idea: NSDictionary?
 }
 
-struct LoadIdeas: Action { }
 struct LoadIdeasFinished: Action {
     var ideas: [NSDictionary]
 }

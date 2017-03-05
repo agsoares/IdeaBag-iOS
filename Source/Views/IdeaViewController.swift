@@ -44,7 +44,11 @@ class IdeaViewController: UIViewController {
         }
         if let title = self.titleTextField.text {
             if !title.isEmpty {
-                mainStore.dispatch(AddIdea(title: self.titleTextField.text))
+                APIManager.shared.AddIdea(title: title).then { action in
+                    mainStore.dispatch(action)
+                }.catch { error in
+                    print(error.localizedDescription)
+                }
             }
         }
         

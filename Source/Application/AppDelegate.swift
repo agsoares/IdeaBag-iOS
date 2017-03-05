@@ -11,7 +11,7 @@ import ReactiveReSwift
 import Firebase
 
 let mainStore: Store = Store(
-    reducer: MainReducer().reducer(),
+    reducer: mainReducer,
     observable: ObservableProperty(AppState())
 )
 
@@ -25,8 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
-        mainStore.dispatch(AnonymousLogin())
-
+        APIManager.shared.AnonymousLogin().then { action in
+            mainStore.dispatch(action)
+            return APIManager.shared.LoadPosts()
+        }.then { action in
+            mainStore.dispatch(action)
+        }.catch { error in
+            print(error)
+        }
+        
         return true
     }
 }

@@ -53,7 +53,11 @@ class MainViewController: UIViewController {
             self?.tableView.reloadData()
         }
 
-        mainStore.dispatch(LoadIdeas())
+        APIManager.shared.LoadPosts().then { action in
+            mainStore.dispatch(action)
+        }.catch { error in
+            print(error.localizedDescription)
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,7 +66,11 @@ class MainViewController: UIViewController {
     }
 
     func refresh(_ refreshControl: UIRefreshControl) {
-        mainStore.dispatch(LoadIdeas())
+        APIManager.shared.LoadPosts().then { action in
+            mainStore.dispatch(action)
+        }.catch { error in
+            print(error.localizedDescription)
+        }
         refreshControl.endRefreshing()
     }
 

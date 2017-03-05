@@ -15,9 +15,14 @@
 		B97A416A1E591D6300969928 /* MainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A41691E591D6300969928 /* MainReducer.swift */; };
 		B97A416C1E593B5300969928 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A416B1E593B5300969928 /* AppActions.swift */; };
 		B9934B321E64CD8F008FC0DA /* AuthReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9934B311E64CD8F008FC0DA /* AuthReducerTests.swift */; };
-		B9934B361E64DB62008FC0DA /* ReactiveReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9934B351E64DB62008FC0DA /* ReactiveReSwift.framework */; };
 		B99741351E6651F7009E3BAE /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D787CF1E664303009176D1 /* Hero.framework */; };
 		B99741361E6651F7009E3BAE /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9D787CF1E664303009176D1 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9A366781E6B9D3D007D2F57 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A366771E6B9D3D007D2F57 /* PromiseKit.framework */; };
+		B9A366791E6B9D3D007D2F57 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9A366771E6B9D3D007D2F57 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9A3667B1E6B9D68007D2F57 /* ReactiveReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A3667A1E6B9D68007D2F57 /* ReactiveReSwift.framework */; };
+		B9A3667C1E6B9D68007D2F57 /* ReactiveReSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9A3667A1E6B9D68007D2F57 /* ReactiveReSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9A3667F1E6B9E4A007D2F57 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A3667E1E6B9E4A007D2F57 /* ReactiveReSwiftBridge.swift */; };
+		B9A366821E6BA0BC007D2F57 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A366811E6BA0BC007D2F57 /* APIManager.swift */; };
 		B9D18E3E1E620FA1008E0311 /* AuthReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18E3D1E620FA1008E0311 /* AuthReducer.swift */; };
 		B9D18E401E6210B1008E0311 /* IdeaReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18E3F1E6210B1008E0311 /* IdeaReducer.swift */; };
 		B9D787D21E6643E4009176D1 /* IdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D787D11E6643E4009176D1 /* IdeaViewController.swift */; };
@@ -48,6 +53,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B99741361E6651F7009E3BAE /* Hero.framework in Embed Frameworks */,
+				B9A366791E6B9D3D007D2F57 /* PromiseKit.framework in Embed Frameworks */,
+				B9A3667C1E6B9D68007D2F57 /* ReactiveReSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +74,10 @@
 		B97A416B1E593B5300969928 /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		B9934B311E64CD8F008FC0DA /* AuthReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthReducerTests.swift; path = Reducer/AuthReducerTests.swift; sourceTree = "<group>"; };
 		B9934B351E64DB62008FC0DA /* ReactiveReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveReSwift.framework; path = Carthage/Build/iOS/ReactiveReSwift.framework; sourceTree = "<group>"; };
+		B9A366771E6B9D3D007D2F57 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		B9A3667A1E6B9D68007D2F57 /* ReactiveReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveReSwift.framework; path = Carthage/Build/iOS/ReactiveReSwift.framework; sourceTree = "<group>"; };
+		B9A3667E1E6B9E4A007D2F57 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveReSwiftBridge.swift; path = Util/ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
+		B9A366811E6BA0BC007D2F57 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = API/APIManager.swift; sourceTree = "<group>"; };
 		B9D18E3D1E620FA1008E0311 /* AuthReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthReducer.swift; sourceTree = "<group>"; };
 		B9D18E3F1E6210B1008E0311 /* IdeaReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdeaReducer.swift; sourceTree = "<group>"; };
 		B9D787CF1E664303009176D1 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
@@ -90,8 +101,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9934B361E64DB62008FC0DA /* ReactiveReSwift.framework in Frameworks */,
 				B99741351E6651F7009E3BAE /* Hero.framework in Frameworks */,
+				B9A366781E6B9D3D007D2F57 /* PromiseKit.framework in Frameworks */,
+				B9A3667B1E6B9D68007D2F57 /* ReactiveReSwift.framework in Frameworks */,
 				6505FBEEE1D99AB1C43F8085 /* Pods_IdeaBag.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,9 +181,27 @@
 			name = Reducer;
 			sourceTree = "<group>";
 		};
+		B9A3667D1E6B9DAE007D2F57 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B9A3667E1E6B9E4A007D2F57 /* ReactiveReSwiftBridge.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		B9A366801E6BA08D007D2F57 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B9A366811E6BA0BC007D2F57 /* APIManager.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		B9DAF7061E590B78006A4923 = {
 			isa = PBXGroup;
 			children = (
+				B9A3667A1E6B9D68007D2F57 /* ReactiveReSwift.framework */,
+				B9A366771E6B9D3D007D2F57 /* PromiseKit.framework */,
 				B9DAF7101E590B79006A4923 /* Products */,
 				B9DAF7111E590B79006A4923 /* Source */,
 				B9DAF7261E590B79006A4923 /* Tests */,
@@ -194,8 +224,10 @@
 			children = (
 				B972F5A31E590BF8007633DF /* Application */,
 				B97A41681E591D4E00969928 /* Reducers */,
+				B9A366801E6BA08D007D2F57 /* API */,
 				B972F5A51E590C13007633DF /* Resources */,
 				B972F5A41E590C05007633DF /* Views */,
+				B9A3667D1E6B9DAE007D2F57 /* Util */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -431,6 +463,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveReSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hero.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 			);
 			name = "Carthage Copy";
 			outputPaths = (
@@ -464,10 +497,12 @@
 				B9327F211E66206D00B2C42B /* AppLayout.swift in Sources */,
 				B97A416C1E593B5300969928 /* AppActions.swift in Sources */,
 				B97A41651E591B1E00969928 /* AppState.swift in Sources */,
+				B9A366821E6BA0BC007D2F57 /* APIManager.swift in Sources */,
 				B9D787D21E6643E4009176D1 /* IdeaViewController.swift in Sources */,
 				B9DAF7151E590B79006A4923 /* MainViewController.swift in Sources */,
 				B9D18E401E6210B1008E0311 /* IdeaReducer.swift in Sources */,
 				B9DAF7131E590B79006A4923 /* AppDelegate.swift in Sources */,
+				B9A3667F1E6B9E4A007D2F57 /* ReactiveReSwiftBridge.swift in Sources */,
 				B97A416A1E591D6300969928 /* MainReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

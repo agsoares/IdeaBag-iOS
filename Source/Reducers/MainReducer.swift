@@ -9,19 +9,11 @@
 import Foundation
 import ReactiveReSwift
 
-struct MainReducer {
-    var authReducer = AuthReducer()
-    var ideaReducer = IdeaReducer()
+let mainReducer: Reducer<AppState> = { action, state -> AppState in
+    var state = state
 
-    func reducer() -> Reducer<AppState> {
-        return { action, state -> AppState in
-            var state = state
+    state = authReducer(action, state)
+    state = ideaReducer(action, state)
 
-            state = self.authReducer.reducer()(action, state)
-            state = self.ideaReducer.reducer()(action, state)
-
-            return state
-        }
-    }
-
+    return state
 }
