@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }.then { action in
             mainStore.dispatch(action)
         }.catch { error in
-            print(error)
+            print(error.localizedDescription)
         }
         
         return true

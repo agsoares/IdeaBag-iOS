@@ -18,20 +18,16 @@ class APIManager {
     static let shared = APIManager()
 
     func AnonymousLogin() -> Promise<Action> {
-        return Promise { fulfill, reject in
-            self.auth?.signInAnonymously(completion: { (user, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    reject(error)
-                } else if let user = user {
-                    fulfill(LoginFinished(user: user))
-                }
-            })
+        return PromiseKit.wrap { self.auth?.signInAnonymously(completion:$0) }.then { user in
+            return Promise { fulfill, _ in
+                fulfill(LoginFinished(user: user))
+            }
         }
     }
 
-    func LoadPosts() -> Promise<Action> {
+    func LoadPosts()  -> Promise<Action> {
         let state = mainStore.observable.value
+
         return Promise { fulfill, _ in
             guard let user = state.user else {
                 return
